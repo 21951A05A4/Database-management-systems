@@ -1,0 +1,68 @@
+1.SELECT
+    SUM(amount) AS total_revenue
+FROM
+    payment;
+
+2.SELECT
+    staff_id,
+    AVG(amount) AS avg_payment
+FROM
+    payment
+GROUP BY
+    staff_id;
+
+3.SELECT
+    film.title AS film_name,
+    COUNT(film_category.film_id) AS film_count
+FROM
+    film
+INNER JOIN
+    film_category ON film.film_id = film_category.film_id
+GROUP BY
+    film.title;
+
+4.SELECT
+    payment.staff_id,
+    SUM(payment.amount) AS total_sales_amount
+FROM
+    payment
+INNER JOIN
+    staff ON payment.staff_id = staff.staff_id
+GROUP BY
+    payment.staff_id
+HAVING
+    COUNT(payment.payment_id) > 100;
+ 
+5.SELECT
+    s.store_id,
+    SUM(p.amount) AS total_sales
+FROM
+    store s
+JOIN
+    staff st ON s.store_id = st.store_id
+JOIN
+    payment p ON st.staff_id = p.staff_id
+GROUP BY
+    s.store_id
+HAVING
+    SUM(p.amount) < 5000;
+
+6.SELECT
+    first_name,
+    last_name
+FROM
+    Customer
+ORDER BY
+    last_name DESC;
+
+12.SELECT
+    staff.staff_id,
+    staff.first_name,
+    staff.last_name,
+    COUNT(rental.rental_id) AS num_rentals
+FROM
+    staff
+LEFT JOIN
+    rental ON staff.staff_id = rental.staff_id
+GROUP BY
+    staff.staff_id, staff.first_name, staff.last_name;
