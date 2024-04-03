@@ -1,0 +1,30 @@
+1.SELECT customer_id, first_name, last_name
+FROM Customer
+WHERE first_name LIKE '%an%';
+
+2.SELECT film_id, FLOOR(length) AS rounded_down_length
+FROM film;
+
+3.SELECT
+    CASE
+        WHEN rental_date IS NOT NULL AND return_date IS NOT NULL THEN DATEDIFF(return_date, rental_date)
+        ELSE NULL
+    END AS rental_duration_days
+FROM rental;
+
+4.SELECT REVERSE(first_name) AS reversed_name
+FROM Customer;
+
+5.SELECT REPLACE(email, 'sakilacustomer.org', 'example.com') AS modified_email
+FROM Customer;
+
+6.SELECT actor_id, first_name, last_name
+FROM actor
+WHERE first_name NOT LIKE 'J%';
+
+7.SELECT rental_id, rental_date, YEAR(rental_date) AS rental_year
+FROM rental;
+
+8.SELECT customer_id, first_name, last_name
+FROM Customer
+WHERE first_name LIKE '%an%';
