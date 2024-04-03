@@ -1,0 +1,9 @@
+1.select film_id, length*length as length_squared from film
+2.select substring(first_name,1,5) as first_name_substr from Customer
+3.select staff_id,round((length(concat(first_name,last_name)))/length(email),2) as name_email_ratio from Staff
+4.select length(email) as email_length from Staff
+5.select film_id, title from film where title like "s%"
+6.select rental_id,rental_date, QUARTER(rental_date) AS quarter from rental
+7.select actor_id,first_name,last_name from actor where last_name like("J%") and length(last_name)=5
+8.select film_id,title from film where title not like("%part%")
+9.select name from category where name like("c%y")
