@@ -1,0 +1,55 @@
+1.
+create table branch(branchid int,branch_name varchar(20));
+insert into branch values(1,'cse');
+insert into branch values(2,'it');
+insert into branch values(3,'ece');
+insert into branch values(4,'eee');
+insert into branch values(5,'aero');
+insert into branch values(6,'ds');
+insert into branch values(7,'cs');
+insert into branch values(8,'csit');
+select * from branch;
+
+create table student(rollno int,name varchar(20),branchid int);
+insert into student values(101,'suresh',1);
+insert into student values(102,'raju',2);
+insert into student values(103,'ravi',3);
+insert into student values(104,'sumathi',4);
+insert into student values(105,'radha',10);
+insert into student values(106,'sita',11);
+insert into student values(107,'laxmi',12);
+insert into student values(108,'swapna',13);
+insert into student values(109,'lavanya',14);
+select * from student;
+select * from student s inner join branch b on s.branchid=b.branchid;
+select rollno,name,s.branchid,branch_name from student s inner join branch b on s.branchid=b.branchid
+select rollno,name,b.branchid,branch_name from student s inner join branch b on s.branchid=b.branchid
+select rollno,name,b.branchid,branch_name from student s join branch b on s.branchid=b.branchid
+
+select * from student s left join branch b on s.branchid=b.branchid;
+select rollno,name,b.branchid,branch_name from student s left join branch b on s.branchid=b.branchid
+
+select * from student s right join branch b on s.branchid=b.branchid;
+select rollno,name,b.branchid,branch_name from student s right join branch b on s.branchid=b.branchid
+select rollno,name,b.branchid,branch_name from student s right outer join branch b on s.branchid=b.branchid
+
+select rollno,name,b.branchid,branch_name from student s full join branch b on s.branchid=b.branchid
+
+
+2.
+create table items(
+name varchar(45) default null,
+price decimal(10,2) default null)
+
+create table variants(
+variant_name varchar(45) not null,
+variant_price decimal(10,2) default null
+)
+
+insert into items values('vadapav',10.00),('dosa',20.00),('sandwich',16.00);
+insert into variants values('butter',5.00),('cheese',10.00),('plain',0.00);
+
+select * from items;
+select * from variants;
+select * from items cross join variants;
+select concat (name,"-",variant_name)name,(price+variant_price) price from items cross join variants;
